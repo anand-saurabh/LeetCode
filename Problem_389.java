@@ -36,3 +36,5 @@ class Solution {
         return key;
     }
 }
+
+/* Better solution: find the Ascii sum of string b and subtract ascii sum of string a. This is the ascii value of extra character.
