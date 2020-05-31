@@ -6,12 +6,11 @@ class Solution {
         {
             return -1;
         }
+        int ans = -1;
         int len = nums.length;
         int [] left = new int[len];
-        int [] right = new int [len];
         
         left[0] = 0;
-        right[len -1] = 0;
         
         int sum = nums[0];
         for (int i = 1; i < len; i++)
@@ -19,19 +18,15 @@ class Solution {
             left[i] = sum;
             sum += nums[i];
         }
-        sum = nums[len-1];
-        for (int i = len - 2; i >= 0; i--)
+        sum = 0;
+        for (int i = len - 1; i >= 0; i--)
         {
-            right[i] = sum;
+            if(sum == left[i])
+            {
+                ans = i;
+            }
             sum += nums[i];
         }
-        for (int i = 0; i < len; i++)
-        {
-            if(left[i] == right[i])
-            {
-                return i;
-            }        
-        }
-        return -1;
+        return ans;
     }
 }
