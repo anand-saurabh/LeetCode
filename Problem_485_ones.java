@@ -1,4 +1,4 @@
-//Problem:485. Max Consecutive Ones
+//Problem 202. Happy Number
 
 class Solution {
     public int findMaxConsecutiveOnes(int[] nums) {
