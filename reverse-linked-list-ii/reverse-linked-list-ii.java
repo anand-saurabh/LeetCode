@@ -12,9 +12,9 @@ class Solution {
             
         boolean set = true;
         if(head == null || head.next == null || n == m)
-        {
+        {
             return head;
-        }
+        }
         int count = 1;
         ListNode prev = null;
 ​
