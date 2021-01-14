@@ -4,31 +4,37 @@
  *     int val;
  *     TreeNode left;
  *     TreeNode right;
- *     TreeNode(int x) { val = x; }
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
  * }
  */
 class Solution {
     int max = 0;
     public int diameterOfBinaryTree(TreeNode root) {
-        if(root == null)
-            return 0;
         findDia(root);
-        return max-1;
+        return max;
     }
     
-    int findDia(TreeNode node)
-    {
+    int findDia(TreeNode node){
         if(node == null)
+        {
             return 0;
+        }
+        
         int left = 1 + findDia(node.left);
         int right = 1 + findDia(node.right);
-        int m = left + right - 1;
-​
-        if(m > max)
-        {
-            max = m;
-        }
-        return left > right ? left : right;
         
+        if((left + right - 2) > max)
+        {
+            max = left + right - 2;
+        }
+        
+        return Math.max(left, right);
     }
+    
 }
