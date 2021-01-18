@@ -1,0 +1,87 @@
+class Solution {
+    int comp = 0;
+    int parent[];
+    int rank[];
+    public int numIslands(char[][] grid) {
+        
+        if (grid == null || grid.length == 0) {
+      return 0;
+    }
+        int row = grid.length;
+        int col = grid[0].length;
+        parent = new int[row * col];
+        rank = new int[row * col];
+        
+        for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++){
+                if(grid[i][j] == '1')
+                {
+                    parent[i * col + j] = i * col + j;
+                    rank[i*col + j] = 0;
+                    comp++;
+                }
+            }
+        }
+        
+        //System.out.println(comp);
+         for (int i = 0; i < row; i++)
+        {
+            for (int j = 0; j < col; j++){
+            
+                if(grid[i][j] == '1')
+                {
+                    grid[i][j] = '0';
+                    if(i + 1 < row && grid[i+1][j] == '1')
+                    {
+                    union(i * col + j, (((i + 1) * col) + j));
+                    }
+                    
+                    if(j + 1 < col && grid[i][j+1] == '1')
+                    {
+                    union(i * col + j, i * col + j + 1);
+                    }
+                    
+                    
+                    
+                }
+            }
+         }
+        return comp;
+    }
+    
+    
+    int find(int i)
+    {
+        if(parent[i] != i)
+        {
+            parent[i] = find(parent[i]);
+        }
+        return parent[i];
+    }
+    
+    void union(int i, int j)
+    {
+        int a = find(i);
+        int b = find(j);
+         if(a != b)
+         {
+            if(rank[a] > rank[b])
+            {
+                parent[b] = a;
+            }
+            else if (rank[b] > rank[a])
+            {
+                parent[a] = b;
+            }
+            else
+            {
+                parent[b] = a;
+                rank[a] += 1; 
+            }
+                     comp--;
+         }
+        
+         //System.out.println(i + " " + j + " count " + comp);
+    }
+}
