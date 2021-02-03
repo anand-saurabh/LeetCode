@@ -1,3 +1,4 @@
+[Discussion Post (created on 2/1/2021 at 20:53)](https://leetcode.com/problems/course-schedule/discuss/?currentPage=1&orderBy=most_votes&query=)  
 <h2>207. Course Schedule</h2><h3>Medium</h3><hr><div><p>There are a total of <code>numCourses</code> courses you have to take, labeled from <code>0</code> to <code>numCourses-1</code>.</p>
 
 <p>Some courses may have prerequisites, for example to take course 0 you have to first take course 1, which is expressed as a pair: <code>[0,1]</code></p>
